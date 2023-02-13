@@ -14,7 +14,7 @@ class TipInputView: UIView {
     
     //MARK: - Properties
     
-    private let tipSubject = CurrentValueSubject<Tip, Never>(.none)
+    private let tipSubject: CurrentValueSubject<Tip, Never> = .init(.none)
     var valuePublisher: AnyPublisher<Tip, Never> {
         return tipSubject.eraseToAnyPublisher()
     }
@@ -103,6 +103,10 @@ class TipInputView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func reset() {
+        tipSubject.send(.none)
     }
     
     private func layout(){

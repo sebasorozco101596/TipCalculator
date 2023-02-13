@@ -71,6 +71,11 @@ class BillInputView: UIView {
         return textField
     }()
     
+    func reset() {
+        textField.text = nil
+        billSubject.send(0)
+    }
+    
     init() {
         super.init(frame: .zero)
         layout()
